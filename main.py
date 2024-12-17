@@ -7,7 +7,7 @@ class ToDoList:
         self.root.geometry("700x700") 
         self.root.resizable(False, False)
 
-# functions 
+
 
 
 
