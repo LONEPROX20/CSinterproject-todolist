@@ -28,7 +28,7 @@ class ToDoList:
         self.stop_timer_button = tk.Button(self.buttons_frame, text='stop_timer', command=self.stop_timer)
         self.stop_timer_button.pack(pady=15)
 
-        self_task_list = []
+        self.task_list = []
         self.task_inputs = tk.Entry(root, width=50)
         self.task_inputs.pack(pady=15)
 
@@ -43,7 +43,12 @@ class ToDoList:
 
         
     def add_task(self):
-        pass
+        task = self.task_inputs.get()
+        if task:
+            self.task_list.append(task)
+            self.task_listbox.insert(tk.END, task)
+            self.task_listbox.delete(0, tk.END)
+        
 
     def remove_task(self):
         pass
