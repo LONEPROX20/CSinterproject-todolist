@@ -25,6 +25,10 @@ class ToDoList:
         self.task_listbox = tk.Listbox(root, width=55, height=20)
         self.task_listbox.pack(pady=40)
 
+        self.timer_status = False
+        self.timer = tk.Label(root, text="00:00", font=("Arial", 30))
+        self.timer.pack(pady=15)
+        
     def add_task(self):
         pass
 
