@@ -1,5 +1,4 @@
 import tkinter as tk
-import time
 from tkinter import messagebox
 
 class ToDoList: 
@@ -18,15 +17,15 @@ class ToDoList:
         self.add_task_button = tk.Button(root, image=self.add_task_icon, command=self.add_task)
         self.add_task_button.pack(pady=10)
 
-        # self.remove_task_icon = tk.PhotoImage(file='remove_tasl.png')
-        # self.remove_task_button = tk.Button(root, image=self.remove_task_icon,command=self.remove_task)
-        # self.remove_task_button.pack(pady=15)
+        self.remove_task_icon = tk.PhotoImage(file='remove_task.png')
+        self.remove_task_button = tk.Button(root, image=self.remove_task_icon,command=self.remove_task)
+        self.remove_task_button.pack(pady=10)
 
         self.start_timer_button = tk.Button(self.buttons_frame, text='start_timer', command=self.start_timer)
-        self.start_timer_button.pack(side=tk.LEFT,padx=5)
+        self.start_timer_button.pack(side=tk.LEFT,padx=5, pady=40)
 
         self.stop_timer_button = tk.Button(self.buttons_frame, text='stop_timer', command=self.stop_timer)
-        self.stop_timer_button.pack(side=tk.LEFT, padx=10)
+        self.stop_timer_button.pack(side=tk.LEFT, padx=50, pady=40)
 
         self.task_list = []
         self.task_inputs = tk.Entry(root, width=50)
@@ -40,8 +39,6 @@ class ToDoList:
         self.timer.pack(pady=10)
 
         
-
-        
     def add_task(self):
         task = self.task_inputs.get()
         if task:
@@ -51,7 +48,12 @@ class ToDoList:
         
 
     def remove_task(self):
-        pass
+        try: 
+            selected_index = self.task_listbox.curselection()[0]
+            self.task_listbox.delete(selected_index) 
+            del self.task_list[selected_index]
+        except IndexError: 
+            messagebox.showwarning("No task selected to be removed")
 
     def start_timer(self):
         if not self.timer_status:
