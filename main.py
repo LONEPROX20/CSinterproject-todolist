@@ -1,6 +1,6 @@
 import tkinter as tk
-
-
+import time
+from tkinter import messagebox
 
 class ToDoList: 
     def __init__(self, root): 
@@ -54,10 +54,19 @@ class ToDoList:
         pass
 
     def start_timer(self):
-        pass
+        if not self.timer_status:
+            self.timer_status: True
+            self.countdown(30*60)
 
     def stop_timer(self):
-        pass
+        self.timer_status: False
+
+    def countdown(self, remaining):
+        if self.timer_status:
+            minutes, seconds = divmod(remaining, 60)
+            time_format = '{:02d}:{:02d}'.format(minutes, seconds)
+            self.timer_label.config(text=time_format)
+            
 
 if __name__ == "__main__": 
     root = tk.Tk()
