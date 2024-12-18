@@ -28,7 +28,11 @@ class ToDoList:
         self.timer_status = False
         self.timer = tk.Label(root, text="00:00", font=("Arial", 30))
         self.timer.pack(pady=15)
-        
+
+        # frames buat tempelin buttons kebawah
+        self.buttons_frame = tk.Frame(root)
+        self.buttons_frame.pack(side=tk.BOTTOM, fill=tk.X, pady=15)
+
     def add_task(self):
         pass
 
